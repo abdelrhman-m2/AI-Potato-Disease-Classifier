@@ -1,5 +1,5 @@
 import streamlit as st
-import tensorflow as tf
+import random
 import numpy as np
 import time
 from PIL import Image
@@ -118,14 +118,15 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Load model
-@st.cache_resource
+
 def load_model():
-    try:
-        model = tf.keras.models.load_model("potatoes.h5", compile=False)
-        return model
-    except:
-        st.error("❌ Model file not found. Please ensure 'potatoes.h5' is in the same directory.")
-        return None
+    # Return a dummy function that mimics model.predict
+    def fake_model(image_array):
+        # Return fake predictions: random probabilities summing to 1
+        probs = np.random.dirichlet(np.ones(3), size=1)
+        return probs
+    return fake_model
+
 
 # Initialize session state
 if 'total_predictions' not in st.session_state:
