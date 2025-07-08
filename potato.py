@@ -281,7 +281,7 @@ with col1:
                 with st.spinner("🔄 Analyzing image..."):
                     # Preprocess and predict
                     processed_image = preprocess_image(image)
-                    prediction = model.predict(processed_image)
+                    prediction = model(processed_image)
                     classes = ["Early Blight", "Late Blight", "Healthy"]
                     
                     # Get results
